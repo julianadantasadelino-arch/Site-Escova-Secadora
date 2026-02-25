@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlossHair Pro — Cabelos de Salão em 10 Minutos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ========================
+   CSS VARIABLES & RESET
+======================== */
+:root {
+  --rose-gold: #e86780;
+  --champagne: #f4a1b5;
+  --black: #2a1520;
+  --soft-white: #fff8fa;
+  --gold: #e86780;
+  --blush: #fde8ee;
+  --dark-section: #fdf0f4;
+  --card-bg: #ffffff;
+  --border: rgba(232,103,128,0.2);
+  --radius: 12px;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+  --text-main: #2a1520;
+  --text-muted: #8a5a6a;
+  --bg-main: #be4f6f;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-main);
+  color: var(--text-main);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Grain texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ========================
+   TYPOGRAPHY
+======================== */
+.display { font-family: var(--font-display); }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.1; }
+
+/* ========================
+   STICKY TOP BAR
+======================== */
+#sticky-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background-color: var(--bg-main);
+  border-bottom: none;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 20px rgba(232,103,128,0.35);
+}
+
+#sticky-bar .bar-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+#sticky-bar .bar-text span {
+  color: #fff;
+  font-weight: 800;
+  font-size: 17px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+#sticky-bar .bar-cta {
+  background: #ffffff;
+  color: #e86780;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+#sticky-bar .bar-cta:hover {
+  background: #fde8ee;
+  transform: scale(1.04);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+/* ========================
+   SCROLL FADE ANIMATION
+======================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in.delay-1 { transition-delay: 0.1s; }
+.fade-in.delay-2 { transition-delay: 0.2s; }
+.fade-in.delay-3 { transition-delay: 0.3s; }
+.fade-in.delay-4 { transition-delay: 0.4s; }
+
+/* ========================
+   SECTION WRAPPER
+======================== */
+.section {
+  padding: 100px 24px;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e86780;
+  margin-bottom: 16px;
+}
+
+/* ========================
+   CTA BUTTON
+======================== */
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-main);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 18px 40px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+  box-shadow: 0 8px 30px rgba(232,103,128,0.4);
+}
+
+.cta-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.35) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.cta-btn:hover::after { transform: translateX(100%); }
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(232,103,128,0.5);
+}
+
+.cta-btn.full { width: 100%; justify-content: center; }
+.cta-btn.large { font-size: 16px; padding: 22px 56px; }
+
+/* ========================
+   HERO SECTION
+======================== */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px;
+  background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(244,161,181,0.18) 0%, transparent 70%),
+              radial-gradient(ellipse 60% 80% at 80% 80%, rgba(232,103,128,0.08) 0%, transparent 60%),
+              #fff8fa;
+  position: relative;
+  overflow: hidden;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244,161,181,0.1) 0%, transparent 70%);
+  animation: pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+
+.hero-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-text .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(232,103,128,0.1);
+  border: 1px solid rgba(232,103,128,0.3);
+  color: #e86780;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 6px 16px;
+  border-radius: 50px;
+  margin-bottom: 28px;
+}
+
+.hero-text h1 {
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1.0;
+  margin-bottom: 24px;
+  color: var(--text-main);
+}
+
+.hero-text h1 em {
+  font-style: italic;
+  color: #e86780;
+}
+
+.hero-text .subtitle {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 36px;
+  max-width: 440px;
+}
+
+.hero-price {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.hero-price .old {
+  font-size: 18px;
+  color: rgba(42,21,32,0.35);
+  text-decoration: line-through;
+}
+
+.hero-price .new {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 700;
+  color: #e86780;
+  line-height: 1;
+}
+
+.hero-price .installment {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.hero-urgency {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #c0546a;
+}
+
+.urgency-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+ 
+  background: #ff6b6b;
+  box-shadow: 0 0 8px #ff6b6b;
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Hero visual / product mockup */
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-visual .product-glow {
+  position: absolute;
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244,161,181,0.2) 0%, transparent 70%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.brush-svg-wrap {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 20px 60px rgba(232,103,128,0.2));
+}
+
+/* Floating badge on product */
+.float-badge {
+  position: absolute;
+  background: #ffffff;
+  border: 1px solid rgba(232,103,128,0.2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  z-index: 2;
+  box-shadow: 0 4px 20px rgba(232,103,128,0.12);
+}
+
+.float-badge.top-left {
+  top: 20px; left: -20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.float-badge.bottom-right {
+  bottom: 30px; right: -20px;
+  animation: float 3s ease-in-out infinite 1.5s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.float-badge .fb-label {
+  font-size: 10px;
+  color: #e86780;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.float-badge .fb-value {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* ========================
+   SOCIAL PROOF BAR
+======================== */
+#social-proof {
+  background: linear-gradient(135deg, #fde8ee 0%, #fdf0f4 100%);
+  border-top: 1px solid rgba(232,103,128,0.15);
+  border-bottom: 1px solid rgba(232,103,128,0.15);
+  padding: 40px 24px;
+}
+
+.stats-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+
+.stat-item .stat-num {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 700;
+  color: #e86780;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-item .stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ========================
+   PROBLEM vs SOLUTION
+======================== */
+#problem-solution {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.ps-panel {
+  padding: 80px 60px;
+}
+
+.ps-panel.problem {
+  background: linear-gradient(135deg, #fff0f2 0%, #fff8fa 100%);
+  border-right: 1px solid rgba(232,103,128,0.12);
+}
+
+.ps-panel.solution {
+  background: linear-gradient(135deg, #fde8ee 0%, #fff0f4 100%);
+}
+
+.ps-panel .ps-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 50px;
+  margin-bottom: 24px;
+}
+
+.problem .ps-tag {
+  background: rgba(192,53,79,0.08);
+  color: #c0354f;
+  border: 1px solid rgba(192,53,79,0.2);
+}
+
+.solution .ps-tag {
+  background: rgba(232,103,128,0.1);
+  color: #e86780;
+  border: 1px solid rgba(232,103,128,0.25);
+}
+
+.ps-panel h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  line-height: 1.2;
+}
+
+.problem h2 { color: #c0354f; }
+.solution h2 { color: #e86780; }
+
+.ps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ps-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-main);
+}
+
+.ps-list li .icon {
+  flex-shrink: 0;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  margin-top: 1px;
+}
+
+.problem .icon { background: rgba(192,53,79,0.1); color: #c0354f; }
+.solution .icon { background: rgba(232,103,128,0.15); color: #e86780; }
+
+/* ========================
+   BENEFITS GRID
+======================== */
+#benefits {
+  background: #fdf0f4;
+}
+
+.benefits-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 64px;
+}
+
+.benefits-header h2 {
+  font-size: clamp(36px, 5vw, 56px);
+  margin-bottom: 16px;
+  color: var(--text-main);
+}
+
+.benefits-header p {
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.benefit-card {
+  background: #ffffff;
+  border: 1px solid rgba(232,103,128,0.15);
+  border-radius: var(--radius);
+  padding: 36px 28px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(232,103,128,0.06);
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e86780, transparent);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.benefit-card:hover {
+  border-color: rgba(232,103,128,0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(232,103,128,0.12);
+}
+
+.benefit-card:hover::before { opacity: 1; }
+
+.benefit-icon {
+  width: 52px; height: 52px;
+  background: rgba(244,161,181,0.15);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+
+.benefit-card h3 {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: #e86780;
+  margin-bottom: 10px;
+}
+
+.benefit-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ========================
+   HOW TO USE — 3 STEPS
+======================== */
+#how-to-use {
+  background: var(--bg-main);
+}
+
+.htu-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.htu-header h2 {
+  font-size: clamp(36px, 5vw, 54px);
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.steps-row {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr 60px 1fr;
+  align-items: center;
+  gap: 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.step-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e86780;
+  opacity: 0.5;
+}
+
+.step-card {
+  text-align: center;
+  padding: 40px 24px;
+  background: #ffffff;
+  border: 1px solid rgba(232,103,128,0.15);
+  border-radius: var(--radius);
+  position: relative;
+  box-shadow: 0 2px 16px rgba(232,103,128,0.07);
+}
+
+.step-num {
+  position: absolute;
+  top: -16px; left: 50%;
+  transform: translateX(-50%);
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, #e86780, #f4a1b5);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.step-icon {
+  margin: 16px auto 20px;
+  width: 64px; height: 64px;
+}
+
+.step-card h3 {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: #e86780;
+  margin-bottom: 8px;
+}
+
+.step-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+#video-proof {
+  background: #fff8fa;
+  padding-top: 0;
+}
+
+#video-proof .section {
+  padding-top: 0;
+}
+
+.video-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.video-header h2 {
+  font-size: clamp(36px, 5vw, 54px);
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.video-header p {
+  font-size: 16px;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.video-wrap {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.video-frame {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(232,103,128,0.15),
+    0 8px 40px rgba(232,103,128,0.18),
+    0 32px 80px rgba(232,103,128,0.08);
+  background: #fde8ee;
+}
+
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 20px;
+}
+
+.video-badges {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.video-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid rgba(232,103,128,0.18);
+  border-radius: 50px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 12px rgba(232,103,128,0.07);
+}
+
+.video-badge .vb-icon {
+  font-size: 16px;
+}
+
+.video-badge .vb-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+/* ========================
+   TESTIMONIALS
+======================== */
+#testimonials {
+  background: #fde8ee;
+}
+
+.test-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.test-header h2 {
+  font-size: clamp(36px, 5vw, 54px);
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.test-card {
+  background: #ffffff;
+  border: 1px solid rgba(232,103,128,0.15);
+  border-radius: var(--radius);
+  padding: 36px 28px;
+  position: relative;
+  box-shadow: 0 2px 16px rgba(232,103,128,0.07);
+}
+
+.test-quote-mark {
+  font-family: var(--font-display);
+  font-size: 80px;
+  line-height: 0.5;
+  color: #f4a1b5;
+  opacity: 0.5;
+  position: absolute;
+  top: 28px; left: 24px;
+}
+
+.test-text {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--text-main);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  padding-top: 20px;
+}
+
+.test-stars {
+  color: #e86780;
+  font-size: 14px;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.test-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.test-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e86780, #f4a1b5);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.test-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+.test-city {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ========================
+   OFFER / PRICING
+======================== */
+#offer {
+  background: #fff8fa;
+}
+
+.offer-box {
+  max-width: 680px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 2px solid rgba(232,103,128,0.35);
+  border-radius: 20px;
+  padding: 60px 56px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 60px rgba(232,103,128,0.12), 0 0 0 6px rgba(244,161,181,0.08);
+}
+
+.offer-box::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(232,103,128,0.2), transparent 50%, rgba(244,161,181,0.1));
+  z-index: -1;
+}
+
+.offer-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e86780;
+  margin-bottom: 12px;
+}
+
+.offer-title {
+  font-size: 28px;
+  color: var(--text-main);
+  margin-bottom: 36px;
+}
+
+.price-block .was {
+  font-size: 20px;
+  color: rgba(42,21,32,0.3);
+  text-decoration: line-through;
+  margin-bottom: 6px;
+}
+
+.price-block .now-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.price-block .price {
+  font-family: var(--font-display);
+  font-size: 80px;
+  font-weight: 700;
+  color: #e86780;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.price-block .installment {
+  font-size: 16px;
+  color: #c0546a;
+  margin-bottom: 40px;
+}
+
+.offer-includes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.offer-include-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+.offer-include-item .check {
+  width: 22px; height: 22px;
+  background: rgba(232,103,128,0.1);
+  border: 1px solid rgba(232,103,128,0.25);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #e86780;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.offer-seals {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+.seal {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.seal span:first-child { font-size: 16px; }
+
+/* ========================
+   GUARANTEE
+======================== */
+#guarantee {
+  background: linear-gradient(135deg, #fde8ee 0%, #fff0f4 100%);
+  border-top: 1px solid rgba(232,103,128,0.15);
+  border-bottom: 1px solid rgba(232,103,128,0.15);
+}
+
+.guarantee-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.guarantee-icon {
+  width: 80px; height: 80px;
+  background: rgba(232,103,128,0.1);
+  border: 2px solid rgba(232,103,128,0.25);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 28px;
+  font-size: 32px;
+}
+
+.guarantee-inner h2 {
+  font-size: clamp(30px, 4vw, 46px);
+  color: var(--text-main);
+  margin-bottom: 16px;
+}
+
+.guarantee-inner p {
+  font-size: 17px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ========================
+   FAQ ACCORDION
+======================== */
+#faq {
+  background: #fff8fa;
+}
+
+.faq-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.faq-header h2 {
+  font-size: clamp(34px, 4vw, 50px);
+  color: var(--text-main);
+}
+
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: #ffffff;
+  border: 1px solid rgba(232,103,128,0.15);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.3s;
+  box-shadow: 0 1px 8px rgba(232,103,128,0.05);
+}
+
+.faq-item.open { border-color: rgba(232,103,128,0.4); }
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-main);
+  transition: color 0.3s;
+}
+
+.faq-item.open .faq-question { color: #e86780; }
+
+.faq-chevron {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  background: rgba(232,103,128,0.1);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #e86780;
+  font-size: 12px;
+  transition: transform 0.35s ease;
+}
+
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-answer-inner {
+  padding: 0 24px 20px;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.faq-item.open .faq-answer { max-height: 200px; }
+
+/* ========================
+   FOOTER / FINAL CTA
+======================== */
+#footer-cta {
+  background: linear-gradient(135deg, #fde8ee 0%, #f4a1b5 50%, #fde8ee 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+#footer-cta::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.footer-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 100px 24px;
+  position: relative;
+}
+
+.footer-inner h2 {
+  font-size: clamp(36px, 5vw, 60px);
+  color: #2a1520;
+  margin-bottom: 12px;
+}
+
+.footer-inner h2 em {
+  font-style: italic;
+  color: #c0354f;
+}
+
+.footer-inner .sub {
+  font-size: 16px;
+  color: rgba(42,21,32,0.65);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* Countdown */
+.countdown-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.cd-label {
+  font-size: 13px;
+  color: rgba(42,21,32,0.55);
+  margin-right: 4px;
+}
+
+.cd-unit {
+  text-align: center;
+}
+
+.cd-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 700;
+  color: #c0354f;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(232,103,128,0.25);
+  border-radius: 10px;
+  width: 72px;
+  line-height: 1.3;
+  padding: 4px 0;
+}
+
+.cd-unit-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(42,21,32,0.45);
+  margin-top: 6px;
+  display: block;
+}
+
+.cd-sep {
+  font-family: var(--font-display);
+  font-size: 40px;
+  color: #c0354f;
+  line-height: 1;
+  margin-bottom: 20px;
+  opacity: 0.6;
+}
+
+.footer-note {
+  margin-top: 24px;
+  font-size: 12px;
+  color: rgba(42,21,32,0.4);
+}
+
+.footer-copy {
+  padding: 24px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(42,21,32,0.35);
+  border-top: 1px solid rgba(232,103,128,0.15);
+  background: #fff8fa;
+}
+
+/* ========================
+   RESPONSIVE — MOBILE
+======================== */
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 60px 24px;
+  }
+  .hero-visual { order: -1; }
+  .hero-text h1 { font-size: clamp(38px, 9vw, 56px); }
+  .benefits-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; gap: 28px; }
+  #problem-solution { grid-template-columns: 1fr; }
+  .ps-panel { padding: 60px 24px; }
+  .steps-row {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    gap: 32px;
+  }
+  .step-connector { transform: rotate(90deg); }
+  .offer-box { padding: 40px 24px; }
+  .price-block .price { font-size: 60px; }
+  .cta-btn.large { font-size: 14px; padding: 18px 32px; }
+  .cd-num { font-size: 38px; width: 58px; }
+}
+
+@media (max-width: 600px) {
+  .section { padding: 70px 20px; }
+  .offer-seals { gap: 16px; }
+  #sticky-bar .bar-text { font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========================
+     STICKY TOP BAR
+======================== -->
+<div id="sticky-bar">
+  <p class="bar-text">🔥 Oferta especial: <span>R$ 147 com frete grátis</span> — apenas para hoje</p>
+  <button class="bar-cta" onclick="scrollToOffer()">GARANTIR AGORA →</button>
+</div>
+
+
+<!-- ========================
+     HERO SECTION
+======================== -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-text fade-in">
+     
+      <h1>Cabelos de Salão em <em>10 Minutos.</em> Sem Sair de Casa.</h1>
+      <p class="subtitle">A escova que seca, alisa e dá brilho ao mesmo tempo — sem danificar os fios. Tecnologia profissional na sua mão.</p>
+      <div class="hero-price">
+        <span class="old">R$ 297,00</span>
+        <span class="new">R$ 147,00</span>
+        <span class="installment">ou 6x R$24,50</span>
+      </div>
+      <button class="cta-btn large" onclick="scrollToOffer()">
+        COMPRAR AGORA
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+      <div class="hero-urgency">
+        <span class="urgency-dot"></span>
+        🔥 Últimas 47 unidades em estoque — preço volta ao normal em breve
+      </div>
+    </div>
+
+    <div class="hero-visual fade-in delay-2">
+      <div class="product-glow"></div>
+      <img src="/images/secadora1.png" alt="">
+
+   
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================
+     SOCIAL PROOF BAR
+======================== -->
+<section id="social-proof">
+  <div class="stats-grid">
+    <div class="stat-item fade-in">
+      <div class="stat-num">50K+</div>
+      <div class="stat-label">Clientes satisfeitas</div>
+    </div>
+    <div class="stat-item fade-in delay-1">
+      <div class="stat-num">4.9⭐</div>
+      <div class="stat-label">Avaliação média</div>
+    </div>
+    <div class="stat-item fade-in delay-2">
+      <div class="stat-num">98%</div>
+      <div class="stat-label">Recomendam</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================
+     PROBLEM vs SOLUTION
+======================== -->
+<div id="problem-solution">
+  <div class="ps-panel problem fade-in">
+    <span class="ps-tag">Antes</span>
+    <h2>O Problema que Toda Mulher Conhece</h2>
+    <ul class="ps-list">
+      <li>
+        <span class="icon">✕</span>
+        <span>Chapinha que resseca e danifica os fios com o uso frequente</span>
+      </li>
+      <li>
+        <span class="icon">✕</span>
+        <span>40 minutos na frente do espelho — secador + chapinha separados</span>
+      </li>
+      <li>
+        <span class="icon">✕</span>
+        <span>Frizz insistente que volta horas depois</span>
+      </li>
+      <li>
+        <span class="icon">✕</span>
+        <span>Calor excessivo sem controle, quebrando as pontas</span>
+      </li>
+      <li>
+        <span class="icon">✕</span>
+        <span>Resultado que dura apenas algumas horas</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="ps-panel solution fade-in delay-2">
+    <span class="ps-tag">Com GlossHair Pro</span>
+    <h2>Uma Ferramenta. Resultado Perfeito.</h2>
+    <ul class="ps-list">
+      <li>
+        <span class="icon">✓</span>
+        <span>Seca e alisa em uma única passada, sem danificar</span>
+      </li>
+      <li>
+        <span class="icon">✓</span>
+        <span>10 minutos do início ao fim — mais tempo para você</span>
+      </li>
+      <li>
+        <span class="icon">✓</span>
+        <span>Íons negativos eliminam o frizz e lacram as cutículas</span>
+      </li>
+      <li>
+        <span class="icon">✓</span>
+        <span>Temperatura precisa de 150°C a 230°C para cada tipo de cabelo</span>
+      </li>
+      <li>
+        <span class="icon">✓</span>
+        <span>Brilho intenso e liso que dura dias</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- ========================
+     VIDEO SOCIAL PROOF
+======================== -->
+
+<section id="video-proof">
+  <div class="section">
+    <div class="video-header fade-in">
+      <div class="section-label">✦ Veja ao Vivo ✦</div>
+      <h2>O Resultado Fala por Si Mesmo</h2>
+      <p>Assista e veja a transformação em tempo real — do cabelo úmido ao liso impecável em minutos.</p>
+    </div>
+    <div class="video-wrap fade-in delay-1">
+      <div class="video-frame">
+        <iframe
+          src="https://www.youtube.com/embed/TwEVIsCA4qs?rel=0&modestbranding=1&color=white"
+          title="GlossHair Pro — Resultado ao Vivo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-badges">
+        <div class="video-badge">
+          <span class="vb-icon">⭐</span>
+          <span class="vb-text">Resultado real, sem edição</span>
+        </div>
+        <div class="video-badge">
+          <span class="vb-icon">⚡</span>
+          <span class="vb-text">10 minutos do início ao fim</span>
+        </div>
+        <div class="video-badge">
+          <span class="vb-icon">💆‍♀️</span>
+          <span class="vb-text">Sem produtos extras necessários</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================
+     BENEFITS GRID
+======================== -->
+<section id="benefits">
+  <div class="section">
+    <div class="benefits-header fade-in">
+      <div class="section-label">Tecnologia Premium</div>
+      <h2>Tudo que Você Precisa em Uma Escova</h2>
+      <p>Desenvolvida com tecnologia de ponta usada nos melhores salões do Brasil.</p>
+    </div>
+    <div class="benefits-grid">
+
+      <div class="benefit-card fade-in delay-1">
+        <div class="benefit-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e86780" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+            <path d="M8 12s1.5 2 4 2 4-2 4-2"/>
+            <line x1="9" y1="9" x2="9.01" y2="9"/>
+            <line x1="15" y1="9" x2="15.01" y2="9"/>
+          </svg>
+        </div>
+        <h3>Seca e Alisa Simultaneamente</h3>
+        <p>Elimine dois passos da sua rotina. Com GlossHair Pro, você faz tudo de uma vez — economizando tempo e cuidando dos fios.</p>
+      </div>
+
+      <div class="benefit-card fade-in delay-2">
+        <div class="benefit-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e86780" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <h3>Íons Negativos Anti-Frizz</h3>
+        <p>A tecnologia de ionização neutraliza as cargas elétricas dos fios, eliminando o frizz e deixando os cabelos suaves e brilhosos.</p>
+      </div>
+
+      <div class="benefit-card fade-in delay-3">
+        <div class="benefit-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e86780" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+          </svg>
+        </div>
+        <h3>Temperatura Ajustável</h3>
+        <p>De 150°C a 230°C com ajuste preciso. Perfeito para cabelos finos, grossos, lisos ou cacheados — cada tipo de fio tem sua temperatura ideal.</p>
+      </div>
+
+      <div class="benefit-card fade-in delay-1">
+        <div class="benefit-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e86780" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h3>Revestimento de Cerâmica</h3>
+        <p>O revestimento cerâmico distribui o calor de forma homogênea, protegendo os fios de queima e pontas duplas.</p>
+      </div>
+
+      <div class="benefit-card fade-in delay-2">
+        <div class="benefit-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e86780" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a10 10 0 0 1 10 10"/>
+            <path d="M12 2a10 10 0 0 0-10 10"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <h3>Cabo Giratório 360°</h3>
+        <p>O cabo anti-enrolamento gira 360° para total liberdade de movimento. Nunca mais se enrolar no fio enquanto usa a escova.</p>
+      </div>
+
+      <div class="benefit-card fade-in delay-3">
+        <div class="benefit-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e86780" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <h3>Leve e Ergonômica</h3>
+        <p>Com apenas 450g, o design ergonômico evita o cansaço no pulso mesmo em cabelos longos. Conforto profissional em cada uso.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================
+     HOW TO USE — 3 STEPS
+======================== -->
+<section id="how-to-use">
+  <div class="section">
+    <div class="htu-header fade-in">
+      <div style="color: #fff0f2; font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  
+  margin-bottom: 16px;">Simples assim</div>
+      <h2>3 Passos para o Cabelo dos Sonhos</h2>
+    </div>
+
+    <div class="steps-row">
+      <div class="step-card fade-in delay-1">
+        <div class="step-num">1</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="20" r="12" stroke="#e86780" stroke-width="2"/>
+            <path d="M12 52c0-11 9-20 20-20s20 9 20 20" stroke="#e86780" stroke-width="2" stroke-linecap="round"/>
+            <path d="M32 32v8M26 36l6 4 6-4" stroke="#f4a1b5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Cabelo Úmido ou Seco</h3>
+        <p>Lave os cabelos normalmente ou use no seco. A GlossHair Pro funciona nos dois casos.</p>
+      </div>
+
+      <div class="step-connector fade-in">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+
+      <div class="step-card fade-in delay-2">
+        <div class="step-num">2</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="12" width="24" height="36" rx="12" stroke="#e86780" stroke-width="2"/>
+            <path d="M32 48v8" stroke="#f4a1b5" stroke-width="2" stroke-linecap="round"/>
+            <path d="M26 56h12" stroke="#f4a1b5" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="39" cy="22" r="2" fill="#e86780" opacity="0.8">
+              <animate attributeName="opacity" values="0.4;1;0.4" dur="1.5s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+        <h3>Passe a Escova</h3>
+        <p>Divida em mechas e passe a escova de cima para baixo. Seca e alisa ao mesmo tempo.</p>
+      </div>
+
+      <div class="step-connector fade-in">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+
+      <div class="step-card fade-in delay-3">
+        <div class="step-num">3</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="20" r="12" stroke="#e86780" stroke-width="2"/>
+            <path d="M18 40c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="#e86780" stroke-width="2" stroke-linecap="round"/>
+            <path d="M24 26l5 5 9-9" stroke="#e86780" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="32" cy="52" r="4" fill="#f4a1b5" opacity="0.4"/>
+            <circle cx="32" cy="52" r="2" fill="#e86780" opacity="0.7"/>
+          </svg>
+        </div>
+        <h3>Liso, Brilhoso e Perfeito</h3>
+        <p>Resultado de salão em minutos. Brilho intenso que dura dias sem esforço.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- ========================
+     TESTIMONIALS
+======================== -->
+<section id="testimonials">
+  <div class="section">
+    <div class="test-header fade-in">
+      <div class="section-label">Avaliações Reais</div>
+      <h2>Elas Já Estão Apaixonadas</h2>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="test-card fade-in delay-1">
+        <div class="test-quote-mark">"</div>
+        <p class="test-text">Sério, essa escova mudou minha vida. Antes gastava 45 minutos todo dia, agora faço em 10. O liso fica igual ao da escova progressiva e dura dias!</p>
+        <div class="test-stars">★★★★★</div>
+        <div class="test-author">
+          <div class="test-avatar">A</div>
+          <div>
+            <div class="test-name">Ana Paula S.</div>
+            <div class="test-city">São Paulo, SP</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card fade-in delay-2">
+        <div class="test-quote-mark">"</div>
+        <p class="test-text">Meu cabelo é muito rebelde e nada resolvia. A GlossHair Pro foi a primeira coisa que realmente domou o frizz. Uso todo dia e os fios estão cada vez mais saudáveis.</p>
+        <div class="test-stars">★★★★★</div>
+        <div class="test-author">
+          <div class="test-avatar">C</div>
+          <div>
+            <div class="test-name">Carla M.</div>
+            <div class="test-city">Belo Horizonte, MG</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-card fade-in delay-3">
+        <div class="test-quote-mark">"</div>
+        <p class="test-text">Comprei com um pouco de desconfiança, mas chegou rápido e na primeira vez de usar já fiquei impressionada. O brilho é absurdo! Indiquei pras minhas amigas todas.</p>
+        <div class="test-stars">★★★★★</div>
+        <div class="test-author">
+          <div class="test-avatar">J</div>
+          <div>
+            <div class="test-name">Juliana R.</div>
+            <div class="test-city">Curitiba, PR</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================
+     OFFER / PRICING
+======================== -->
+<section id="offer">
+  <div class="section">
+    <div class="offer-box fade-in">
+      <div class="offer-label">✦ Oferta Especial ✦</div>
+      <h2 class="offer-title">Garanta Sua GlossHair Pro Agora</h2>
+
+      <div class="price-block">
+        <div class="was">De: R$ 297,00</div>
+        <div class="now-label">Por apenas</div>
+        <div class="price">R$ 147</div>
+        <div class="installment">ou 6x de R$ 24,50 sem juros</div>
+      </div>
+
+      <div class="offer-includes">
+        <div class="offer-include-item">
+          <span class="check">✓</span>
+          <span>Escova Secadora e Alisadora GlossHair Pro</span>
+        </div>
+        <div class="offer-include-item">
+          <span class="check">✓</span>
+          <span>Manual de uso em português</span>
+        </div>
+        <div class="offer-include-item">
+          <span class="check">✓</span>
+          <span>Bolsa de viagem premium inclusa</span>
+        </div>
+        <div class="offer-include-item">
+          <span class="check">✓</span>
+          <span>Garantia de 12 meses contra defeitos</span>
+        </div>
+      </div>
+
+      <button class="cta-btn full large" onclick="scrollToOffer()">
+        GARANTIR MINHA ESCOVA AGORA →
+      </button>
+
+      <div class="offer-seals">
+        <div class="seal"><span>🔒</span><span>Compra Segura</span></div>
+        <div class="seal"><span>🚚</span><span>Frete Grátis</span></div>
+        <div class="seal"><span>↩️</span><span>30 dias de garantia</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================
+     GUARANTEE
+======================== -->
+<section id="guarantee">
+  <div class="section">
+    <div class="guarantee-inner fade-in">
+      <div class="guarantee-icon">🛡️</div>
+      <div class="section-label">Risco Zero</div>
+      <h2>Garantia Incondicional de 30 Dias</h2>
+      <p>Se por qualquer motivo você não ficar completamente apaixonada pela sua GlossHair Pro, basta entrar em contato e devolvemos 100% do seu dinheiro — sem perguntas, sem burocracia. Simples assim.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================
+     FAQ ACCORDION
+======================== -->
+<section id="faq">
+  <div class="section">
+    <div class="faq-header fade-in">
+      <div class="section-label">Dúvidas Frequentes</div>
+      <h2>Perguntas & Respostas</h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item fade-in delay-1">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Funciona em cabelos muito cacheados ou afro?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Sim! A GlossHair Pro é indicada para todos os tipos de cabelo, incluindo cacheados e crespos. A temperatura ajustável (até 230°C) garante que mesmo fios mais resistentes sejam domados com suavidade. Recomendamos começar com temperaturas mais altas (200–230°C) para cabelos crespos e fazer mechas menores para melhor resultado.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in delay-2">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          A escova é bivolt? Posso usar em qualquer tomada?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Sim, a GlossHair Pro é 100% bivolt (110V e 220V). Você pode usar em qualquer tomada do Brasil sem adaptadores. Também é compatível com voltagem internacional, ideal para levar em viagens ao exterior.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in delay-3">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Em quanto tempo chega o produto?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">O prazo de entrega varia conforme a sua localização. Para capitais e regiões metropolitanas, geralmente de 3 a 7 dias úteis. Para o interior e regiões mais afastadas, pode levar até 15 dias úteis. Você receberá o código de rastreamento por e-mail assim que o pedido for enviado.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in delay-1">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Precisa usar com algum produto nos cabelos?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Não é obrigatório, mas recomendamos usar um protetor térmico antes de aplicar a escova para potencializar os resultados e proteger ainda mais os fios. A GlossHair Pro funciona perfeitamente sozinha tanto em cabelo úmido quanto seco — sem necessidade de outros produtos para um resultado incrível.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in delay-2">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Como funciona a garantia e como acionar em caso de defeito?
+          <span class="faq-chevron">▼</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">A escova possui garantia de 12 meses contra defeitos de fabricação e 30 dias de satisfação garantida. Para acionar, basta entrar em contato com nosso suporte via e-mail ou WhatsApp informando o número do pedido. Nossa equipe resolve tudo rapidamente — troca, reparo ou reembolso total.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ========================
+     FOOTER / FINAL CTA
+======================== -->
+<section id="footer-cta">
+  <div class="footer-inner">
+    <div class="section-label fade-in">⚠️ Atenção</div>
+    <h2 class="fade-in">Não Perca Essa <em>Oferta</em> — Preço Volta ao Normal em Breve</h2>
+    <p class="sub fade-in">Esta promoção é por tempo limitado. Quando o contador chegar ao zero, o preço volta para R$ 297,00.</p>
+
+    <div class="countdown-wrap fade-in delay-1">
+      <span class="cd-label">Oferta expira em:</span>
+      <div class="cd-unit">
+        <span class="cd-num" id="cd-h">00</span>
+        <span class="cd-unit-label">horas</span>
+      </div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit">
+        <span class="cd-num" id="cd-m">00</span>
+        <span class="cd-unit-label">min</span>
+      </div>
+      <span class="cd-sep">:</span>
+      <div class="cd-unit">
+        <span class="cd-num" id="cd-s">00</span>
+        <span class="cd-unit-label">seg</span>
+      </div>
+    </div>
+
+    <button class="cta-btn large fade-in delay-2" onclick="scrollToOffer()">
+      GARANTIR MINHA ESCOVA AGORA →
+    </button>
+
+    <p class="footer-note fade-in delay-3">🔒 Pagamento 100% seguro · SSL · Parcelamento sem juros</p>
+  </div>
+  <div class="footer-copy">© 2024 GlossHair Pro · Todos os direitos reservados</div>
+</section>
+
+
+<script>
+// ========================
+// SCROLL FADE-IN (Intersection Observer)
+// ========================
+const fadeEls = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+fadeEls.forEach(el => observer.observe(el));
+
+
+// ========================
+// COUNTDOWN TIMER (24h, resets each session)
+// ========================
+(function initCountdown() {
+  const KEY = 'glosshair_cd_end';
+  let end = sessionStorage.getItem(KEY);
+
+  if (!end) {
+    end = Date.now() + 24 * 60 * 60 * 1000; // 24 hours from now
+    sessionStorage.setItem(KEY, end);
+  } else {
+    end = parseInt(end);
+    if (end < Date.now()) {
+      end = Date.now() + 24 * 60 * 60 * 1000;
+      sessionStorage.setItem(KEY, end);
+    }
+  }
+
+  const hEl = document.getElementById('cd-h');
+  const mEl = document.getElementById('cd-m');
+  const sEl = document.getElementById('cd-s');
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    const diff = Math.max(0, end - Date.now());
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    hEl.textContent = pad(h);
+    mEl.textContent = pad(m);
+    sEl.textContent = pad(s);
+    if (diff > 0) requestAnimationFrame(() => setTimeout(tick, 200));
+  }
+  tick();
+})();
+
+
+// ========================
+// FAQ ACCORDION
+// ========================
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+
+  // Close all
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+
+  // Toggle current
+  if (!isOpen) item.classList.add('open');
+}
+
+
+// ========================
+// SCROLL TO OFFER
+// ========================
+function scrollToOffer() {
+  document.getElementById('offer').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>

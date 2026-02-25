@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crush Ion Lizz — Chega de Cabelo Destruído</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #C8566B;
+    --rose-dark: #9E3A4E;
+    --rose-light: #F7E8EC;
+    --cream: #FDF6F0;
+    --warm: #E8C9A0;
+    --brown: #3D2314;
+    --text: #2A1A12;
+    --muted: #7A5C52;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #1a0a05 0%, #3D1520 40%, #7A2535 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(200,86,107,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(232,201,160,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    background: rgba(200,86,107,0.2);
+    border: 1px solid rgba(200,86,107,0.5);
+    color: #F2A8B8;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 50px;
+    margin-bottom: 32px;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 7vw, 72px);
+    font-weight: 900;
+    color: var(--white);
+    text-align: center;
+    line-height: 1.1;
+    max-width: 800px;
+    animation: fadeDown 0.9s ease 0.1s both;
+  }
+
+  .hero h1 span {
+    color: var(--rose);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    max-width: 580px;
+    margin-top: 20px;
+    line-height: 1.7;
+    font-weight: 300;
+    animation: fadeDown 1s ease 0.2s both;
+  }
+
+  .hero-cta {
+    margin-top: 44px;
+    animation: fadeDown 1s ease 0.35s both;
+  }
+
+  .btn-main {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 18px 44px;
+    border-radius: 60px;
+    text-decoration: none;
+    box-shadow: 0 8px 40px rgba(200,86,107,0.5);
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-main:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 14px 50px rgba(200,86,107,0.6);
+  }
+
+  .btn-sub-text {
+    display: block;
+    margin-top: 12px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    animation: bounce 2s infinite;
+  }
+  .hero-scroll span { width: 1px; height: 40px; background: rgba(255,255,255,0.3); }
+  .hero-scroll p { font-size: 11px; color: rgba(255,255,255,0.3); letter-spacing: 2px; text-transform: uppercase; }
+
+  /* STORY SECTION */
+  .story {
+    background: var(--white);
+    padding: 90px 20px;
+    position: relative;
+  }
+
+  .story-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 16px;
+  }
+
+  .story h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-bottom: 32px;
+    color: var(--brown);
+  }
+
+  .story p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #4A3028;
+    margin-bottom: 22px;
+    font-weight: 300;
+  }
+
+  .story p strong {
+    font-weight: 600;
+    color: var(--rose-dark);
+  }
+
+  .story-quote {
+    background: var(--rose-light);
+    border-left: 4px solid var(--rose);
+    padding: 24px 28px;
+    border-radius: 0 12px 12px 0;
+    margin: 36px 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--rose-dark);
+    line-height: 1.6;
+  }
+
+  /* VIDEO SECTION */
+  .video-section {
+    background: linear-gradient(180deg, var(--cream) 0%, #F0E6D3 100%);
+    padding: 80px 20px;
+    text-align: center;
+  }
+
+  .video-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--brown);
+  }
+
+  .video-section p {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 44px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .video-placeholder {
+    max-width: 760px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #1a0a05, #3D1520);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(61,35,20,0.3);
+    aspect-ratio: 16/9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .video-placeholder:hover { transform: scale(1.01); }
+
+  .video-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(200,86,107,0.15) 0%, transparent 70%);
+  }
+
+  .play-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(200,86,107,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 0 rgba(200,86,107,0.4);
+    animation: pulse 2s infinite;
+    z-index: 1;
+  }
+
+  .play-btn svg { margin-left: 6px; }
+
+  .video-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    z-index: 1;
+  }
+
+  .video-sublabel {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 8px;
+    z-index: 1;
+  }
+
+  .video-input-area {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .video-input-area p {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .video-input-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .video-input-row input {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    padding: 12px 18px;
+    border: 1.5px solid rgba(200,86,107,0.3);
+    border-radius: 40px;
+    width: 320px;
+    background: white;
+    color: var(--text);
+    outline: none;
+    transition: border 0.2s;
+  }
+
+  .video-input-row input:focus { border-color: var(--rose); }
+
+  .video-input-row button {
+    background: var(--rose);
+    color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 12px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .video-input-row button:hover { background: var(--rose-dark); }
+
+  /* BENEFITS */
+  .benefits {
+    background: var(--white);
+    padding: 90px 20px;
+  }
+
+  .benefits-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .benefits h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 14px;
+  }
+
+  .benefits-lead {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 540px;
+    margin: 0 auto 60px;
+    line-height: 1.7;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    text-align: left;
+  }
+
+  .benefit-card {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 32px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(200,86,107,0.2);
+    box-shadow: 0 20px 50px rgba(200,86,107,0.1);
+  }
+
+  .benefit-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--rose-light);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+
+  .benefit-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 10px;
+  }
+
+  .benefit-card p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* FAQ */
+  .faq {
+    background: linear-gradient(180deg, var(--cream) 0%, var(--rose-light) 100%);
+    padding: 90px 20px;
+  }
+
+  .faq-inner {
+    max-width: 740px;
+    margin: 0 auto;
+  }
+
+  .faq-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .faq-lead {
+    text-align: center;
+    color: var(--muted);
+    margin-bottom: 52px;
+    font-size: 16px;
+  }
+
+  .faq-item {
+    background: var(--white);
+    border-radius: 16px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(61,35,20,0.06);
+  }
+
+  .faq-q {
+    padding: 22px 26px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--brown);
+    transition: color 0.2s;
+    user-select: none;
+  }
+
+  .faq-q:hover { color: var(--rose); }
+
+  .faq-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--rose-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--rose);
+    font-size: 20px;
+    font-weight: 300;
+    transition: transform 0.3s ease, background 0.2s;
+    line-height: 1;
+  }
+
+  .faq-item.open .faq-icon {
+    transform: rotate(45deg);
+    background: var(--rose);
+    color: white;
+  }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 300px;
+    padding: 0 26px 22px;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    background: var(--brown);
+    padding: 90px 20px;
+  }
+
+  .testimonials-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .testimonials h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 52px;
+  }
+
+  .testimonials h2 span { color: var(--rose); font-style: italic; }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    text-align: left;
+  }
+
+  .testimonial-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 28px;
+  }
+
+  .stars {
+    color: var(--warm);
+    font-size: 18px;
+    margin-bottom: 16px;
+    letter-spacing: 2px;
+  }
+
+  .testimonial-card p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.75;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+
+  .reviewer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .reviewer-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .reviewer-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--cream);
+  }
+
+  .reviewer-detail {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* CTA FINAL */
+  .cta-final {
+    background: linear-gradient(135deg, var(--rose-light), var(--cream));
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(200,86,107,0.12) 0%, transparent 70%);
+  }
+
+  .cta-final h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 5vw, 56px);
+    font-weight: 900;
+    color: var(--brown);
+    line-height: 1.2;
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .cta-final h2 span { color: var(--rose); font-style: italic; }
+
+  .cta-final p {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 500px;
+    margin: 0 auto 44px;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .cta-final .btn-main {
+    font-size: 20px;
+    padding: 22px 56px;
+    position: relative;
+  }
+
+  .cta-guarantee {
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--brown);
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+
+  /* ANIMATIONS */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(200,86,107,0.5); }
+    70% { box-shadow: 0 0 0 20px rgba(200,86,107,0); }
+    100% { box-shadow: 0 0 0 0 rgba(200,86,107,0); }
+  }
+
+  /* FLOATING CTA */
+  .floating-cta {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+    color: white;
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(200,86,107,0.5);
+    transition: all 0.4s ease;
+    z-index: 1000;
+    white-space: nowrap;
+  }
+
+  .floating-cta.visible {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .floating-cta:hover {
+    box-shadow: 0 12px 40px rgba(200,86,107,0.65);
+    transform: translateX(-50%) translateY(-3px);
+  }
+
+  @media (max-width: 600px) {
+    .video-input-row input { width: 100%; }
+    .floating-cta { font-size: 14px; padding: 13px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FLOATING CTA -->
+<a href="SEU_LINK_DE_AFILIADA_AQUI" class="floating-cta" id="floatingCta">✨ Quero minha Crush Ion agora</a>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">✦ Escova Secadora Profissional</div>
+  <h1>Seu cabelo pode ser <span>perfeito em 10 minutos</span> todo dia</h1>
+  <p class="hero-sub">Sem frisar, sem danificar, sem gastar fortunas no salão. A Crush Ion da Lizz transforma o seu dia a dia com a tecnologia que os profissionais usam.</p>
+  <div class="hero-cta">
+    <a href="SEU_LINK_DE_AFILIADA_AQUI" class="btn-main">🛒 Quero transformar meu cabelo</a>
+    <span class="btn-sub-text">Frete grátis · Pagamento seguro · Entrega rápida</span>
+  </div>
+  <div class="hero-scroll">
+    <p>Rolar</p>
+    <span></span>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story">
+  <div class="story-inner">
+    <p class="section-label">✦ Minha história</p>
+    <h2>Eu também já odiei meu cabelo. Até encontrar isso.</h2>
+
+    <p>Sabe aquela sensação de acordar, olhar no espelho, e já começar o dia frustrada? Eu vivia assim. Meu cabelo era um campo de batalha — <strong>ressecado, quebradiço, com frizz em todo lugar</strong>. Todo dia era uma luta de 40 minutos com chapinha, secador, escova… e ainda assim o resultado nunca era o que eu queria.</p>
+
+    <p>Eu gastava uma fortuna no salão tentando "consertar" o que eu mesma danificava em casa. Minha cabeleireira vivia me dizendo: <em>"Você tá usando as ferramentas erradas"</em>. Mas eu não sabia por onde começar a mudar.</p>
+
+    <div class="story-quote">"Foi quando uma amiga me mandou um vídeo usando a Crush Ion da Lizz. Em menos de 10 minutos, o cabelo dela tava liso, brilhoso, e com aquele volume perfeito. Pensei: 'isso é mágica ou é real?'"</div>
+
+    <p>Resolvi arriscar. E posso te dizer: <strong>foi a melhor decisão que tomei para o meu cabelo em anos.</strong> Sem exagero. Na primeira semana de uso, minha rotina de manhã caiu de 40 minutos para menos de 15. Meu cabelo parou de frizar. O brilho voltou. E eu me senti, pela primeira vez em muito tempo, <strong>dona do meu visual</strong>.</p>
+
+    <p>Hoje eu compartilho isso com você porque sei o quanto uma ferramenta certa pode mudar não só o cabelo, mas a sua autoestima e o seu tempo todos os dias.</p>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video-section">
+  <p class="section-label" style="text-align:center">✦ Veja em ação</p>
+  <h2>Assista e veja a transformação</h2>
+  <p>Cole o link do seu vídeo abaixo para ativar o player, ou use como inspiração visual.</p>
+
+  <div class="video-placeholder" id="videoArea">
+    <div class="play-btn">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+    </div>
+    <p class="video-label">Crush Ion Lizz em ação</p>
+    <p class="video-sublabel">Resultados reais · Antes e depois</p>
+  </div>
+
+  <div class="video-input-area">
+    <p>👇 Cole aqui o link do seu vídeo (YouTube) para ativar:</p>
+    <div class="video-input-row">
+      <input type="text" id="videoUrl" placeholder="https://www.youtube.com/watch?v=..." />
+      <button onclick="embedVideo()">Ativar vídeo</button>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="benefits-inner">
+    <p class="section-label">✦ Por que a Crush Ion?</p>
+    <h2>Tudo que você precisa em uma única escova</h2>
+    <p class="benefits-lead">Tecnologia profissional pensada para a mulher que tem rotina, pressa e ainda quer se sentir incrível todo dia.</p>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">⚡</div>
+        <h3>Tecnologia Íon Ativo</h3>
+        <p>Os íons negativos selam as cutículas dos fios, eliminam o frizz e devolvem o brilho natural — sem agredir o cabelo.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⏱️</div>
+        <h3>Pronta em 10 minutinhos</h3>
+        <p>Escova e seca ao mesmo tempo. Chega de usar 3 aparelhos diferentes. Uma única ferramenta para um resultado de salão.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">💆</div>
+        <h3>Menos dano, mais vida</h3>
+        <p>O calor distribuído de forma uniforme protege os fios do superaquecimento que destrói a estrutura do cabelo.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">💰</div>
+        <h3>Salão? Só quando quiser</h3>
+        <p>Com a Crush Ion no banheiro, você faz em casa aquele resultado que antes só conseguia pagando caro no salão.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">✋</div>
+        <h3>Fácil de usar</h3>
+        <p>Design ergonômico pensado para facilitar o manuseio mesmo nas partes mais difíceis como a nuca e as laterais.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🌡️</div>
+        <h3>Temperatura controlada</h3>
+        <p>Ajuste o calor de acordo com o seu tipo de cabelo. Funciona para lisos, ondulados, cacheados e crespos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <p class="section-label" style="text-align:center">✦ Suas dúvidas, respondidas</p>
+    <h2>Tudo que você quer saber</h2>
+    <p class="faq-lead">Antes de comprar, faz todo sentido ter dúvidas. Aqui estão as mais comuns:</p>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Funciona para todos os tipos de cabelo?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Sim! A Crush Ion da Lizz tem configurações de temperatura que atendem desde cabelos lisos e finos até crespos e grossos. O segredo está na tecnologia de íons que se adapta a diferentes texturas sem danificar.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Ela vai danificar meu cabelo com o uso frequente?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Ao contrário! A tecnologia Íon Ativo ajuda a selar as cutículas dos fios, deixando o cabelo mais saudável ao longo do tempo. Diferente das chapinhas convencionais, a Crush Ion foi desenvolvida para estilizar com cuidado.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Quanto tempo dura o efeito liso?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Depende do tipo de cabelo e da umidade do ambiente, mas em geral o resultado fica bonito por 1 a 2 dias. Muitas clientes relatam que com o uso contínuo, os fios ficam cada vez mais dóceis e fáceis de trabalhar.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Consigo usar sozinha sem precisar de ajuda?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Sim! O design foi criado pensando exatamente nisso. O cabo ergonômico facilita o movimento em todas as partes do cabelo, inclusive nuca e laterais. Qualquer pessoa consegue usar sem dificuldade.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        O produto é original e tem garantia?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">Sim, o produto é 100% original da Lizz. Ao comprar pelo link desta página, você garante o produto autêntico com garantia do fabricante e suporte ao consumidor.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Como funciona a entrega e o prazo?
+        <span class="faq-icon">+</span>
+      </div>
+      <div class="faq-a">A entrega é feita pelos Correios ou transportadoras parceiras. O prazo varia de acordo com a sua região, mas a maioria dos pedidos chega em 5 a 10 dias úteis. Você recebe o código de rastreio por e-mail.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <h2>Elas já <span>transformaram</span> a rotina</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Comprei com desconfiança e me surpreendi demais. Meu cabelo nunca ficou tão bonito em casa. Em 12 minutos tô pronta e parece que fui ao salão."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background: linear-gradient(135deg, #C8566B, #9E3A4E);">F</div>
+          <div>
+            <div class="reviewer-name">Fernanda M.</div>
+            <div class="reviewer-detail">Cabelo ondulado · São Paulo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Mãe de dois filhos aqui. Tempo é algo que não tenho de sobra. A Crush Ion me salvou. Antes ficava 45 min no banheiro, hoje são 15 e o resultado é muito melhor."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background: linear-gradient(135deg, #B87333, #8B5A2B);">C</div>
+          <div>
+            <div class="reviewer-name">Camila R.</div>
+            <div class="reviewer-detail">Cabelo liso fino · Belo Horizonte</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Meu cabelo era muito danificado de tanto calor errado. Com a Crush Ion, além de estilizar, percebo que os fios estão recuperando. O brilho voltou! Indico demais."</p>
+        <div class="reviewer">
+          <div class="reviewer-avatar" style="background: linear-gradient(135deg, #7A5C52, #4A3028);">A</div>
+          <div>
+            <div class="reviewer-name">Ana Paula S.</div>
+            <div class="reviewer-detail">Cabelo crespo · Curitiba</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <h2>Está pronta para amar<br><span>seu cabelo todo dia?</span></h2>
+  <p>Não perca mais tempo e dinheiro. Sua nova rotina de beleza começa com um clique.</p>
+  <a href="SEU_LINK_DE_AFILIADA_AQUI" class="btn-main">✨ Quero minha Crush Ion agora</a>
+  <p class="cta-guarantee">🔒 Compra 100% segura &nbsp;·&nbsp; 📦 Frete grátis &nbsp;·&nbsp; ⭐ Produto original Lizz</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Esta página contém links de afiliada. Ao comprar pelo link, posso receber uma comissão sem custo adicional para você.</p>
+  <br>
+  <p style="margin-top:6px;font-size:11px;opacity:0.4">© 2025 · Todos os direitos reservados</p>
+</footer>
+
+<script>
+  // Floating CTA visibility
+  const floatingCta = document.getElementById('floatingCta');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      floatingCta.classList.add('visible');
+    } else {
+      floatingCta.classList.remove('visible');
+    }
+  });
+
+  // FAQ toggle
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Video embed
+  function embedVideo() {
+    const url = document.getElementById('videoUrl').value.trim();
+    if (!url) return;
+
+    let videoId = '';
+    const ytMatch = url.match(/(?:v=|youtu\.be\/|embed\/)([a-zA-Z0-9_-]{11})/);
+    if (ytMatch) videoId = ytMatch[1];
+
+    if (videoId) {
+      const area = document.getElementById('videoArea');
+      area.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="border-radius:24px;position:absolute;inset:0;width:100%;height:100%;"></iframe>`;
+      area.style.padding = '0';
+    } else {
+      alert('Por favor, cole um link válido do YouTube (youtube.com/watch?v=... ou youtu.be/...)');
+    }
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.benefit-card, .testimonial-card, .faq-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
